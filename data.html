@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sonu Kumar | Documents</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: #fff;
+      margin: 0;
+      min-height: 100vh;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h1 {
+      text-align: center;
+      font-weight: 700;
+      margin-bottom: 20px;
+      animation: fadeInDown 1s ease-in-out;
+    }
+
+    .profile {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      align-items: center;
+      max-width: 900px;
+      width: 100%;
+      margin-bottom: 30px;
+      animation: fadeInUp 1s ease-in-out;
+    }
+
+    .profile img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 3px solid #fff;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+    .profile img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #fff;
+    }
+
+    .profile-info h2 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+
+    .profile-info p {
+      margin: 5px 0;
+      color: #ddd;
+    }
+
+    .dashboard {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      width: 100%;
+      max-width: 900px;
+    }
+
+    .doc-card {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+    .doc-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .doc-icon {
+      font-size: 50px;
+      margin-bottom: 15px;
+      color: #ffd700;
+    }
+
+    .doc-title {
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      background: #ffd700;
+      color: #333;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      text-decoration: none;
+    }
+    .btn:hover {
+      background: #ffca00;
+    }
+
+    .message {
+      margin-top: 15px;
+      font-size: 0.9rem;
+      color: #aaffaa;
+      text-align: center;
+      display: none;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 500px) {
+      .btn-group {
+        flex-direction: column;
+      }
+      .profile {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Welcome to Sonu Kumar's Profile</h1>
+
+  <div class="profile">
+    <img src="./image/2.jpg" alt="Sonu Kumar" />
+    <div class="profile-info">
+      <h2>Sonu Kumar</h2>
+      <p>Full Stack Developer | Java & SQL Programmer | AI & Data Science</p>
+      <p>Email: sonukumar943488@gmail.com</p>
+      <p>Phone: +91 82717 12001</p>
+    </div>
+  </div>
+
+  <section class="dashboard">
+    <!-- Document 1 -->
+    <div class="doc-card">
+      <div class="doc-icon">📝</div>
+      <div class="doc-title">10th Marksheet</div>
+      <div class="btn-group">
+        <a href="./Documents/CLASS_10TH_CERTIFICATE.pdf" target="_blank" class="btn" onclick="showMessage('Viewed 10th Marksheet')">
+          <i class="fas fa-eye"></i> View
+        </a>
+        <a href="./Documents/CLASS_10TH_CERTIFICATE.pdf" download="./Documents/CLASS_10TH_CERTIFICATE.pdf" class="btn" onclick="showMessage('Downloaded 10th Marksheet')">
+          <i class="fas fa-download"></i> Download
+        </a>
+      </div>
+    </div>
+
+    <!-- Document 2 -->
+    <div class="doc-card">
+      <div class="doc-icon">📝</div>
+      <div class="doc-title">12th Marksheet</div>
+      <div class="btn-group">
+        <a href="./Documents/12th_Markshsheet.pdf" target="_blank" class="btn" onclick="showMessage('Viewed 12th Marksheet')">
+          <i class="fas fa-eye"></i> View
+        </a>
+        <a href="./Documents/12th_Markshsheet.pdf" download="./Documents/12th_Markshsheet.pdf" class="btn" onclick="showMessage('Downloaded 12th Marksheet')">
+          <i class="fas fa-download"></i> Download
+        </a>
+      </div>
+    </div>
+
+    <!-- Add more documents -->
+    <div class="doc-card">
+      <div class="doc-icon">📝</div>
+      <div class="doc-title">Engineering Marksheet</div>
+      <div class="btn-group">
+        <a href="./Documents/ENGINEERING MARKSHEET.pdf" target="_blank" class="btn" onclick="showMessage('Viewed')">
+          <i class="fas fa-eye"></i> View
+        </a>
+        <a href="./Documents/ENGINEERING MARKSHEET.pdf" download="./Documents/ENGINEERING MARKSHEET.pdf" class="btn" onclick="showMessage('Downloaded')">
+          <i class="fas fa-download"></i> Download
+        </a>
+      </div>
+    </div>
+
+    <div class="doc-card">
+      <div class="doc-icon">📝</div>
+      <div class="doc-title">Engineering Marksheet</div>
+      <div class="btn-group">
+        <a href="./Documents/overall marksheet.pdf" target="_blank" class="btn" onclick="showMessage('Viewed')">
+          <i class="fas fa-eye"></i> View
+        </a>
+        <a href="./Documents/overall marksheet.pdf" download="./Documents/overall marksheet.pdf" class="btn" onclick="showMessage('Downloaded')">
+          <i class="fas fa-download"></i> Download
+        </a>
+      </div>
+    </div>
+
+    <div class="doc-card">
+      <div class="doc-icon">🆔</div>
+      <div class="doc-title">Ration Card</div>
+      <div class="btn-group">
+        <a href="./Documents/rasan card.jpg" target="_blank" class="btn" onclick="showMessage('Viewed Ration Card')">
+          <i class="fas fa-eye"></i> View
+        </a>
+        <a href="./Documents/rasan card.jpg" download="./Documents/rasan card.jpg" class="btn" onclick="showMessage('Downloaded Ration Card')">
+          <i class="fas fa-download"></i> Download
+        </a>
+      </div>
+    </div>
+    <div class="doc-card">
+      <div class="doc-icon">🆔</div>
+      <div class="doc-title">PAN Card</div>
+      <div class="btn-group">
+        <a href="./Documents/pan card.jpg" target="_blank" class="btn" onclick="showMessage('Viewed')">
+          <i class="fas fa-eye"></i> View
+        </a>
+        <a href="./Documents/pan card.pdf" download="./Documents/pan card.pdf" class="btn" onclick="showMessage('Downloaded')">
+          <i class="fas fa-download"></i> Download
+        </a>
+      </div>
+    </div>
+    <div class="doc-card">
+      <div class="doc-icon">🆔</div>
+      <div class="doc-title">Aadhar Card</div>
+      <div class="btn-group">
+        <a href="./Documents/adhar card.pdf" target="_blank" class="btn" onclick="showMessage('Viewed Card')">
+          <i class="fas fa-eye"></i> View
+        </a>
+        <a href="./Documents/adhar card.pdf" download="./Documents/adhar card.pdf" class="btn" onclick="showMessage('Downloaded')">
+          <i class="fas fa-download"></i> Download
+        </a>
+      </div>
+    </div>
+    <div class="doc-card">
+      <div class="doc-icon">🆔</div>
+      <div class="doc-title">Voter Card</div>
+      <div class="btn-group">
+        <a href="./Documents/voter1.jpg" target="_blank" class="btn" onclick="showMessage('Viewed Card')">
+          <i class="fas fa-eye"></i> View
+        </a>
+        <a href="./Documents/voter 2.jpg" download="./Documents/voter 2.jpg" class="btn" onclick="showMessage('Downloaded Card')">
+          <i class="fas fa-download"></i> Download
+        </a>
+      </div>
+    </div>
+    <div class="doc-card">
+      <div class="doc-icon">🆔</div>
+      <div class="doc-title">IRCTC ID</div>
+      <div class="btn-group">
+        <a href="./Documents/railwayid.jpg" target="_blank" class="btn" onclick="showMessage('Viewed')">
+          <i class="fas fa-eye"></i> View
+        </a>
+        <a href="./Documents/railwayid.jpg" download="./Documents/railwayid.jpg" class="btn" onclick="showMessage('Downloaded')">
+          <i class="fas fa-download"></i> Download
+        </a>
+      </div>
+    </div>
+    
+    <div class="doc-card">
+      <div class="doc-icon">💌</div>
+      <div class="doc-title">Digitide Offer Letter</div>
+      <div class="btn-group">
+        <a href="./Documents/offerletter.pdf" target="_blank" class="btn" onclick="showMessage('Viewed')">
+          <i class="fas fa-eye"></i> View
+        </a>
+        <a href="./Documents/offerletter.pdf" download="./Documents/offerletter.pdf" class="btn" onclick="showMessage('Downloaded')">
+          <i class="fas fa-download"></i> Download
+        </a>
+      </div>
+    </div>
+    <div class="doc-card">
+      <div class="doc-icon">💬</div>
+      <div class="doc-title">Drcc Nawada</div>
+      <div class="btn-group">
+        <a href="./Documents/SANC_NAWADA_3640309_161837.pdf" target="_blank" class="btn" onclick="showMessage('Viewed')">
+          <i class="fas fa-eye"></i> View
+        </a>
+        <a href="./Documents/SANC_NAWADA_3640309_161837.pdf" download="./Documents/SANC_NAWADA_3640309_161837.pdf" class="btn" onclick="showMessage('Downloaded')">
+          <i class="fas fa-download"></i> Download
+        </a>
+      </div>
+    </div>
+    <div class="doc-card">
+      <div class="doc-icon">Ⓜ</div>
+      <div class="doc-title">Madhya Bihar Gramin Bank PASSBOOK</div>
+      <div class="btn-group">
+        <a href="./Documents/mdgb2.jpg" target="_blank" class="btn" onclick="showMessage('Viewed Card')">
+          <i class="fas fa-eye"></i> View
+        </a>
+        <a href="./Documents/mdgb1.jpg" download="./Documents/mdgb1.jpg" class="btn" onclick="showMessage('Downloaded')">
+          <i class="fas fa-download"></i> Download
+        </a>
+      </div>
+    </div>
+    <div class="doc-card">
+      <div class="doc-icon">Ⓜ</div>
+      <div class="doc-title">AU BANK PASSBOOK</div>
+      <div class="btn-group">
+        <a href="./Documents/AU BANK PASS.jpg" target="_blank" class="btn" onclick="showMessage('Viewed')">
+          <i class="fas fa-eye"></i> View
+        </a>
+        <a href="./Documents/AU CANCEL CHECK.jpg" download="./Documents/AU CANCEL CHECK.jpg" class="btn" onclick="showMessage('Downloaded')">
+          <i class="fas fa-download"></i> Download
+        </a>
+      </div>
+    </div>
+    <div class="doc-card">
+      <div class="doc-icon">Ⓜ</div>
+      <div class="doc-title">SBI PASSBOOK</div>
+      <div class="btn-group">
+        <a href="./Documents/SBIPSDDBOOK.jpg" target="_blank" class="btn" onclick="showMessage('Viewed')">
+          <i class="fas fa-eye"></i> View
+        </a>
+        <a href="./Documents/SBIPSDDBOOK.jpg" download="./Documents/SBIPSDDBOOK.jpg" class="btn" onclick="showMessage('Downloaded')">
+          <i class="fas fa-download"></i> Download
+        </a>
+      </div>
+    </div>
+    <div class="doc-card">
+      <div class="doc-icon">Ⓜ</div>
+      <div class="doc-title">Madhya Bihar Gramin Bank</div>
+      <div class="btn-group">
+        <a href="./Documents/madhy.jpg" target="_blank" class="btn" onclick="showMessage('Viewed')">
+          <i class="fas fa-eye"></i> View
+        </a>
+        <a href="./Documents/madhy.jpg" download="./Documents/madhy.jpg" class="btn" onclick="showMessage('Downloaded')">
+          <i class="fas fa-download"></i> Download
+        </a>
+      </div>
+    </div>
+    <div class="doc-card">
+      <div class="doc-icon">Ⓜ</div>
+      <div class="doc-title">AU Salary Account</div>
+      <div class="btn-group">
+        <a href="./Documents/au.jpg" target="_blank" class="btn" onclick="showMessage('Viewed')">
+          <i class="fas fa-eye"></i> View
+        </a>
+        <a href="./Documents/au.jpg" download="" class="btn" onclick="showMessage('Downloaded')">
+          <i class="fas fa-download"></i> Download
+        </a>
+      </div>
+    </div>
+    <div class="doc-card">
+      <div class="doc-icon">Ⓜ</div>
+      <div class="doc-title">Airtel Payment Bank</div>
+      <div class="btn-group">
+        <a href="./Documents/airtel payment bank.jpg" target="_blank" class="btn" onclick="showMessage('Viewed  ')">
+          <i class="fas fa-eye"></i> View
+        </a>
+        <a href="./Documents/airtel payment bank.jpg" download="./Documents/airtel payment bank.jpg" class="btn" onclick="showMessage('Downloaded')">
+          <i class="fas fa-download"></i> Download
+        </a>
+      </div>
+    </div>
+    <div class="doc-card">
+      <div class="doc-icon">Ⓜ</div>
+      <div class="doc-title">SBI SCANNER</div>
+      <div class="btn-group">
+        <a href="./Documents/sbi.jpg" target="_blank" class="btn" onclick="showMessage('Viewed')">
+          <i class="fas fa-eye"></i> View
+        </a>
+        <a href="./Documents/sbi2.jpg" download="./Documents/sbi2.jpg" class="btn" onclick="showMessage('Downloaded Scanner')">
+          <i class="fas fa-download"></i> Download
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="message" id="message"></div>
+
+  <script>
+    function showMessage(msg) {
+      const el = document.getElementById("message");
+      el.textContent = msg;
+      el.style.display = "block";
+      setTimeout(() => {
+        el.style.display = "none";
+      }, 3000);
+    }
+  </script>
+</body>
+</html>

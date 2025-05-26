@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login | Sonu Kumar</title>
+  <style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html, body {
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+    background: url('./image/backj.jpg') no-repeat center center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .login-container {
+    background: rgba(243, 240, 240, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 50px 40px;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 0 30px rgba(0, 255, 231, 0.3);
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    animation: bounceIn 0.8s ease-out;
+  }
+
+  @keyframes bounceIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.8) translateY(100px);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+  }
+
+  .login-container img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid #00ffe7;
+    margin-bottom: 20px;
+    box-shadow: 0 0 20px #00ffe7aa;
+    object-fit: cover;
+  }
+
+  .login-container h2 {
+    margin-bottom: 25px;
+    color: #00ffe7;
+    font-size: 1.8rem;
+  }
+
+  input {
+    width: 100%;
+    padding: 14px;
+    margin: 10px 0;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid #00ffe7;
+    border-radius: 10px;
+    color: #00ffe7;
+    font-size: 1rem;
+    box-shadow: 0 0 10px #00ffe755;
+    outline: none;
+    transition: 0.3s;
+  }
+
+  input::placeholder {
+    color: #07cc32aa;
+  }
+
+  input:focus {
+    background: rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 20px #00ffe7;
+  }
+
+  button {
+    width: 100%;
+    padding: 15px;
+    margin-top: 20px;
+    background: linear-gradient(135deg, #00ffe7, #00bfbf);
+    border: none;
+    border-radius: 12px;
+    color: #000;
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #00fff2;
+  }
+
+  .error {
+    margin-top: 15px;
+    color: #ff4d4d;
+    font-weight: 600;
+  }
+
+  .timer {
+    margin-top: 8px;
+    color: #ff9999;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 480px) {
+    .login-container {
+      padding: 30px 25px;
+    }
+
+    input, button {
+      font-size: 0.95rem;
+    }
+  }
+</style>
+
+</head>
+<body>
+  <div class="login-container">
+    <img src="./image/sonu kumar image.jpg" alt="Sonu Profile" />
+    <h2>Sonu Kumar</h2>
+    <input type="text" id="userId" placeholder="User ID" autocomplete="username" />
+    <input type="password" id="password" placeholder="Password" autocomplete="current-password" />
+    <button onclick="login()">Login</button>
+    <p class="error" id="error"></p>
+    <p class="timer" id="timer"></p>
+  </div>
+
+  <script>
+    const correctUserId = "sonukumar943488@gmail.com";
+    const correctPassword = "Karthick@#2001";
+    let attempts = parseInt(localStorage.getItem("attempts")) || 0;
+
+    const error = document.getElementById("error");
+    const timer = document.getElementById("timer");
+
+    function getLockTime(attempts) {
+      if (attempts === 1) return 1 * 60 * 1000; // 1 minute
+      if (attempts >= 2) return 24 * 60 * 60 * 1000; // 24 hours
+      return 0;
+    }
+
+    function updateTimer() {
+      const lockedUntil = localStorage.getItem("lockedUntil");
+      const now = Date.now();
+
+      if (lockedUntil && now < parseInt(lockedUntil)) {
+        const timeLeft = parseInt(lockedUntil) - now;
+        const hours = Math.floor((timeLeft / (1000 * 60 * 60)) % 24);
+        const mins = Math.floor((timeLeft / (1000 * 60)) % 60);
+        const secs = Math.floor((timeLeft / 1000) % 60);
+        timer.textContent = `Try again in ${hours}h ${mins}m ${secs}s`;
+      } else {
+        timer.textContent = "";
+        error.textContent = "";
+        localStorage.removeItem("lockedUntil");
+        localStorage.setItem("attempts", 0);
+        clearInterval(intervalId);
+      }
+    }
+
+    const intervalId = setInterval(updateTimer, 1000);
+    updateTimer();
+
+    function login() {
+      const userId = document.getElementById("userId").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const now = Date.now();
+
+      const lockedUntil = localStorage.getItem("lockedUntil");
+
+      if (lockedUntil && now < parseInt(lockedUntil)) {
+        error.textContent = "Account is locked.";
+        return;
+      }
+
+      if (userId === correctUserId && password === correctPassword) {
+        localStorage.removeItem("attempts");
+        localStorage.removeItem("lockedUntil");
+        window.location.href = "data.html"; // Redirect
+      } else {
+        attempts++;
+        localStorage.setItem("attempts", attempts);
+
+        const lockDuration = getLockTime(attempts);
+        const lockUntil = now + lockDuration;
+
+        if (lockDuration > 0) {
+          localStorage.setItem("lockedUntil", lockUntil);
+          error.textContent = `Account locked for ${attempts === 1 ? "1 minute" : "24 hours"}.`;
+        } else {
+          error.textContent = `Invalid credentials. Attempt ${attempts}`;
+        }
+      }
+    }
+  </script>
+</body>
+</html>
